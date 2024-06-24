@@ -1,6 +1,6 @@
 package mg.nantenaina.Pointing_System;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;
@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @Getter
 public class Pointage {
 
-  private Map<LocalDate, Integer> heuresParJour = new HashMap<>();
+  private Map<LocalDateTime, Integer> heuresParJour = new HashMap<>();
 
-  public void ajouterHeures(LocalDate date, int heures) {
-    this.heuresParJour.put(date, heures);
+  public void ajouterHeures(LocalDateTime dateTime, int heures) {
+    this.heuresParJour.put(dateTime, heures);
   }
 
   public int calculerTotalHeures() {
