@@ -41,6 +41,7 @@ public class CalculateurSalaireTest {
     double salaireBrutRakoto = CalculateurSalaire.calculerSalaireBrut(pointageRakoto, rakoto, calendrier);
     double salaireNetRakoto = CalculateurSalaire.calculerSalaireNet(salaireBrutRakoto);
 
+    // Ajustez les valeurs attendues si nécessaire
     assertEquals(110000, salaireBrutRakoto, 0.001);
     assertEquals(88000, salaireNetRakoto, 0.001);
   }
@@ -58,6 +59,7 @@ public class CalculateurSalaireTest {
     double salaireBrutRabe = CalculateurSalaire.calculerSalaireBrut(pointageRabe, rabe, calendrier);
     double salaireNetRabe = CalculateurSalaire.calculerSalaireNet(salaireBrutRabe);
 
+    // Ajustez les valeurs attendues si nécessaire
     assertEquals(110000, salaireBrutRabe, 0.001);
     assertEquals(88000, salaireNetRabe, 0.001);
   }
@@ -89,6 +91,7 @@ public class CalculateurSalaireTest {
     double salaireBrutRabe = CalculateurSalaire.calculerSalaireBrut(pointageRabe, rabe, calendrier);
     double salaireNetRabe = CalculateurSalaire.calculerSalaireNet(salaireBrutRabe);
 
+    // Ajustez les valeurs attendues si nécessaire
     assertEquals(118800, salaireBrutRakoto, 0.001);
     assertEquals(95040, salaireNetRakoto, 0.001);
     assertEquals(96800, salaireBrutRabe, 0.001);

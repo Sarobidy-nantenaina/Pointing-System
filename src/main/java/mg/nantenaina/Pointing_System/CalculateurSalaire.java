@@ -10,12 +10,15 @@ public class CalculateurSalaire {
   public static double calculerSalaireBrut(Pointage pointage, Employe employe, Calendrier calendrier) {
     double salaireBrut = 0;
     double tauxHoraire = employe.getCategorie().getTauxHoraire();
+    int totalHeures = 0;
+    int heuresSupplementaires = 0;
 
     for (Map.Entry<LocalDateTime, Integer> entree : pointage.getHeuresParJour().entrySet()) {
       LocalDateTime dateTime = entree.getKey();
       int heures = entree.getValue();
       LocalDate date = dateTime.toLocalDate();
       DayOfWeek jour = date.getDayOfWeek();
+      totalHeures += heures;
 
       if (calendrier.estJourFerie(date)) {
         salaireBrut += heures * tauxHoraire * 1.5; // HM50
@@ -28,15 +31,12 @@ public class CalculateurSalaire {
       }
     }
 
-    // Calcul des heures supplémentaires
-    int totalHeures = pointage.calculerTotalHeures();
     int heuresNormales = employe.getCategorie().getHeuresNormalesParSemaine();
     if (totalHeures > heuresNormales) {
-      int heuresSupplementaires = totalHeures - heuresNormales;
+      heuresSupplementaires = totalHeures - heuresNormales;
       int hs30 = Math.min(heuresSupplementaires, 8);
       int hs50 = Math.min(Math.max(heuresSupplementaires - 8, 0), 12);
-      salaireBrut += hs30 * tauxHoraire * 1.3;
-      salaireBrut += hs50 * tauxHoraire * 1.5;
+      salaireBrut += hs30 * tauxHoraire * 0.3;
     }
 
     return salaireBrut;
